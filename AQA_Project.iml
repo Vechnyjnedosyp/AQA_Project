@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-java:4.0.0-beta-4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-api:4.0.0-beta-4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-chrome-driver:4.0.0-beta-4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.google.auto.service:auto-service-annotations:1.0" level="project" />
@@ -27,6 +28,16 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-devtools:4.0.0-beta-4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-http:4.0.0-beta-4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-json:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-devtools-v85:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-devtools-v88:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-devtools-v89:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-devtools-v90:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-devtools-v91:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-edge-driver:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-firefox-driver:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-firefox-xpi-driver:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-ie-driver:4.0.0-beta-4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-opera-driver:4.0.0-beta-4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:4.0.0-beta-4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.81" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.netty:netty-buffer:4.1.63.Final" level="project" />
@@ -62,6 +73,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.typesafe.netty:netty-reactive-streams:2.0.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-safari-driver:4.0.0-beta-4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.seleniumhq.selenium:selenium-support:4.0.0-beta-4" level="project" />
   </component>
 </module>
