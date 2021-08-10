@@ -1,11 +1,9 @@
-package tests;
+package utils;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import utils.Driver;
-import utils.Log;
 
 public class TestsAll {
 
@@ -13,6 +11,7 @@ public class TestsAll {
 
     @BeforeAll
     private void setUp() {
+        driver.manage().window().maximize();
         Log.info("Open page: Address Book - Sign In");
         driver.get("http://a.testaddressbook.com/sign_in");
 

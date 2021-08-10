@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import utils.Log;
+import utils.TestsAll;
 
 import static locators.LoginLocators.*;
 

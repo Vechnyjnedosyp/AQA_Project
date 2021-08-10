@@ -1,27 +1,20 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import utils.Log;
+import utils.LoginUtil;
 
-import java.time.Duration;
+import static locators.LoginLocators.SEARCH_BUTTON_SIGN_OUT;
 
-public class TestSignOut {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class TestSignOut extends LoginUtil {
 
+    @Test
     public void testSignOut() {
-        String baseUrl = "http://a.testaddressbook.com/sign_in";
-        String userLogin = "bibaboba@test.com";
-
-        System.setProperty("webdriver.chrome.driver", "D:\\AQA\\AQA_Project\\src\\main\\resources\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(baseUrl);
-        driver.findElement(By.id("session_email")).sendKeys(userLogin);
-        driver.findElement(By.name("session[password]")).sendKeys("test1234");
-        driver.findElement(By.cssSelector("input[value='Sign in']")).click();
-        driver.findElement(By.xpath("//a[@data-test= 'sign-out']")).click();
-
-        driver.quit();
+        Log.info("User is logging on website.");
+        getToLogin();
+        Log.info("User sign out a profile.");
+        driver.findElement(SEARCH_BUTTON_SIGN_OUT).click();
     }
 }

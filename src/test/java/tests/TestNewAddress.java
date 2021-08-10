@@ -3,15 +3,14 @@ package tests;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.support.ui.Select;
 import utils.Log;
+import utils.LoginUtil;
 
 import static locators.AddressLocators.*;
-import static locators.LoginLocators.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TestNewAddress extends TestsAll {
+public class TestNewAddress extends LoginUtil {
 
-    final String alertNotice = "Address was successfully created.";
     String testInfo = "Test";
     String testAge = "25";
     String testNumber = "+12345678";
@@ -20,23 +19,15 @@ public class TestNewAddress extends TestsAll {
 
     @Test
     @Order(1)
-    @DisplayName("It's test to login on website.")
-    public void getToLogin() {
-
-        Log.info("Enter e-mail");
-        driver.findElement(SEARCH_FIELD_EMAIL).sendKeys("bibaboba@test.com");
-        Log.info("Enter password");
-        driver.findElement(SEARCH_FIELD_PASSWORD).sendKeys("test1234");
-        Log.info("Click on 'Sign in'");
-        driver.findElement(SEARCH_BUTTON).click();
-
+    @DisplayName("User is logging on website.")
+    public void openProfile() {
+        getToLogin();
     }
 
     @Test
     @Order(2)
     @DisplayName("Open list of Addresses.")
     public void getListAddresses() {
-
         Log.info("Click on 'Addresses'");
         driver.findElement(SEARCH_BUTTON_ADDRESSES).click();
         Log.info("Click on 'New Address'");
@@ -180,7 +171,7 @@ public class TestNewAddress extends TestsAll {
         driver.findElement(SEARCH_BUTTON_COMMIT).click();
         String currentNotice = driver.findElement(CURRENT_NOTICE).getText();
         System.out.println("currentNotice " + currentNotice);
-        System.out.println("currentNotice.contains(alertNotice) " + currentNotice.contains(alertNotice));
+        System.out.println("currentNotice.contains(alertNotice) " + currentNotice.contains(ALERT_SAVE_NOTICE));
     }
 
 }

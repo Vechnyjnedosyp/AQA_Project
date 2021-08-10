@@ -1,36 +1,33 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.*;
+import utils.Log;
+import utils.LoginUtil;
 
-import java.time.Duration;
+import static locators.AddressLocators.*;
 
-public class TestDestroyAddress {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class TestDestroyAddress extends LoginUtil {
 
-    final String alertNotice = "Address was successfully destroyed.";
+    @Test
+    @Order(1)
+    @DisplayName("User is logging on website.")
+    public void openProfile() {
+        getToLogin();
+    }
 
-    public void testDestroyAddress() {
-        String baseUrl = "http://a.testaddressbook.com/sign_in";
-        String userLogin = "bibaboba@test.com";
-
-        System.setProperty("webdriver.chrome.driver", "D:\\AQA\\AQA_Project\\src\\main\\resources\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(baseUrl);
-
-        driver.findElement(By.id("session_email")).sendKeys(userLogin);
-        driver.findElement(By.name("session[password]")).sendKeys("test1234");
-        driver.findElement(By.cssSelector("input[value='Sign in']")).click();
-        driver.findElement(By.xpath("//a[@data-test= 'addresses']")).click();
-        driver.findElement(By.linkText("New Address")).click();
-        driver.findElement(By.linkText("Destroy")).click();
+    @Test
+    @Order(2)
+    @DisplayName("Destroy one address.")
+    public void deleteAddress() {
+        Log.info("Click on 'Addresses'");
+        driver.findElement(SEARCH_BUTTON_ADDRESSES).click();
+        Log.info("Click on 'Destroy'");
+        driver.findElement(SEARCH_BUTTON_DESTROY).click();
         driver.switchTo().alert().accept();
-        String currentNotice = driver.findElement(By.xpath("//div[@data-test= 'notice']")).getText();
+        String currentNotice = driver.findElement(CURRENT_NOTICE).getText();
         System.out.println("currentNotice " + currentNotice);
-        System.out.println("currentNotice.contains(alertNotice) " + currentNotice.contains(alertNotice));
-
-        driver.quit();
+        System.out.println("currentNotice.contains(alertNotice) " + currentNotice.contains(ALERT_DESTROY_NOTICE));
     }
 }

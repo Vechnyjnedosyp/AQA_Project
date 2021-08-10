@@ -23,7 +23,14 @@ public class AddressLocators {
     public static final By SEARCH_BUTTON_READ = By.id("address_interest_read");
     public static final By SEARCH_FIELD_NOTE = By.name("address[note]");
     public static final By SEARCH_BUTTON_COMMIT = By.name("commit");
+    public static final By SEARCH_BUTTON_EDIT = By.linkText("Edit");
+    public static final By SEARCH_BUTTON_UPDATE_ADDRESS = By.xpath("//input[@value= 'Update Address']");
+    public static final By SEARCH_LINK_LIST = By.linkText("List");
+    public static final By SEARCH_BUTTON_DESTROY = By.linkText("Destroy");
 
     public static final By CURRENT_NOTICE = By.xpath("//div[@data-test= 'notice']");
+
+    public static final String ALERT_SAVE_NOTICE = "Address was successfully updated.";
+    public static final String ALERT_DESTROY_NOTICE = "Address was successfully destroyed.";
 
 }

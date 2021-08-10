@@ -1,50 +1,102 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.*;
+import utils.Log;
+import utils.LoginUtil;
 
-import java.time.Duration;
+import static locators.AddressLocators.*;
 
-public class TestEditAddress {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class TestEditAddress extends LoginUtil {
 
-    final String alertNotice = "Address was successfully updated.";
+    String testEditInfo = "TestEdit";
 
-    public void testEditAddress() {
-        String baseUrl = "http://a.testaddressbook.com/sign_in";
-        String userLogin = "bibaboba@test.com";
-        String testEditInfo = "TestEdit";
-        System.setProperty("webdriver.chrome.driver", "D:\\AQA\\AQA_Project\\src\\main\\resources\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get(baseUrl);
+    @Test
+    @Order(1)
+    @DisplayName("User is logging on website.")
+    public void openProfile() {
+        getToLogin();
+    }
 
-        driver.findElement(By.id("session_email")).sendKeys(userLogin);
-        driver.findElement(By.name("session[password]")).sendKeys("test1234");
-        driver.findElement(By.cssSelector("input[value='Sign in']")).click();
-        driver.findElement(By.xpath("//a[@data-test= 'addresses']")).click();
-        driver.findElement(By.linkText("New Address")).click();
-        driver.findElement(By.linkText("Edit")).click();
+    @Test
+    @Order(2)
+    @DisplayName("Open list of Addresses.")
+    public void getListAddresses() {
+        Log.info("Click on 'Addresses'");
+        driver.findElement(SEARCH_BUTTON_ADDRESSES).click();
+        Log.info("Click on 'Edit'");
+        driver.findElement(SEARCH_BUTTON_EDIT).click();
+    }
 
-        driver.findElement(By.name("address[first_name]")).clear();
-        driver.findElement(By.name("address[last_name]")).clear();
-        driver.findElement(By.name("address[address1]")).clear();
-        driver.findElement(By.name("address[address2]")).clear();
-        driver.findElement(By.name("address[note]")).clear();
-        driver.findElement(By.name("address[city]")).clear();
-        driver.findElement(By.name("address[first_name]")).sendKeys(testEditInfo);
-        driver.findElement(By.name("address[last_name]")).sendKeys(testEditInfo);
-        driver.findElement(By.name("address[address1]")).sendKeys(testEditInfo);
-        driver.findElement(By.name("address[address2]")).sendKeys(testEditInfo);
-        driver.findElement(By.name("address[city]")).sendKeys(testEditInfo);
-        driver.findElement(By.name("address[note]")).sendKeys("This is the edited address.");
-        driver.findElement(By.xpath("//input[@value= 'Update Address']")).click();
-        String currentNotice = driver.findElement(By.xpath("//div[@data-test= 'notice']")).getText();
+    @Test
+    @Order(3)
+    @DisplayName("User edit 'first name'")
+    public void testEditFirstName() {
+        Log.info("Clear field 'first name'");
+        driver.findElement(SEARCH_FIELD_FIRST_NAME).clear();
+        Log.info("Enter new first name");
+        driver.findElement(SEARCH_FIELD_FIRST_NAME).sendKeys(testEditInfo);
+    }
+
+    @Test
+    @Order(4)
+    @DisplayName("User edit 'last name'")
+    public void testEditLastName() {
+        Log.info("Clear field 'last name'");
+        driver.findElement(SEARCH_FIELD_LAST_NAME).clear();
+        Log.info("Enter new last name");
+        driver.findElement(SEARCH_FIELD_LAST_NAME).sendKeys(testEditInfo);
+    }
+
+    @Test
+    @Order(5)
+    @DisplayName("User edit 'address1'")
+    public void testEditAddress1() {
+        Log.info("Clear field 'address1'");
+        driver.findElement(SEARCH_FIELD_ADDRESS1).clear();
+        Log.info("Enter new address1");
+        driver.findElement(SEARCH_FIELD_ADDRESS1).sendKeys(testEditInfo);
+    }
+
+    @Test
+    @Order(6)
+    @DisplayName("User edit 'address2'")
+    public void testEditAddress2() {
+        Log.info("Clear field 'address2'");
+        driver.findElement(SEARCH_FIELD_ADDRESS2).clear();
+        Log.info("Enter new address2");
+        driver.findElement(SEARCH_FIELD_ADDRESS2).sendKeys(testEditInfo);
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("User edit 'city'")
+    public void testEditCity() {
+        Log.info("Clear field 'city'");
+        driver.findElement(SEARCH_FIELD_CITY).clear();
+        Log.info("Enter new city");
+        driver.findElement(SEARCH_FIELD_CITY).sendKeys(testEditInfo);
+    }
+
+    @Test
+    @Order(8)
+    @DisplayName("User edit 'note'")
+    public void testEditNote() {
+        Log.info("Clear field 'note'");
+        driver.findElement(SEARCH_FIELD_NOTE).clear();
+        Log.info("Enter new note");
+        driver.findElement(SEARCH_FIELD_NOTE).sendKeys("This is the edited address.");
+    }
+
+    @Test
+    @Order(9)
+    @DisplayName("User save a edited address")
+    public void testSaveEditedAddress() {
+        driver.findElement(SEARCH_BUTTON_UPDATE_ADDRESS).click();
+        String currentNotice = driver.findElement(CURRENT_NOTICE).getText();
         System.out.println("currentNotice " + currentNotice);
-        System.out.println("currentNotice.contains(alertNotice) " + currentNotice.contains(alertNotice));
-        driver.findElement(By.linkText("List")).click();
-
-        driver.quit();
+        System.out.println("currentNotice.contains(alertNotice) " + currentNotice.contains(ALERT_SAVE_NOTICE));
+        driver.findElement(SEARCH_LINK_LIST).click();
     }
 }
