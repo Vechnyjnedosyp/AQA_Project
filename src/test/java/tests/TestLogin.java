@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -20,15 +21,18 @@ public class TestLogin extends TestsAll {
         Log.info("Enter password");
         driver.findElement(SEARCH_FIELD_PASSWORD).sendKeys("test1234");
         Log.info("Click on 'Sign in'");
+
+
         driver.findElement(SEARCH_BUTTON).click();
 
         Log.info("Check main header on page");
         String actualTitle = driver.findElement(ACTUAL_TITLE).getText();
         String currentUser = driver.findElement(CURRENT_USER).getText();
+
+//        Assertions.assertEquals("Welcome to Address Book", actualTitle,"It's not a Home page."); ???
+
         Log.info("Check user's email on navigation");
-        String expectedTitle = "Welcome to Address Book";
-        System.out.println("Result actualTitle.equals(expectedTitle) " + actualTitle.contains(expectedTitle));
-        System.out.println("Result currentUser.contains(userLogin) " + currentUser.contains("bibaboba@test.com"));
+        Assertions.assertEquals("bibaboba@test.com", currentUser);
     }
 }
 

@@ -30,7 +30,8 @@ public class AddressLocators {
 
     public static final By CURRENT_NOTICE = By.xpath("//div[@data-test= 'notice']");
 
-    public static final String ALERT_SAVE_NOTICE = "Address was successfully updated.";
+    public static final String ALERT_SAVE_NOTICE = "Address was successfully created.";
+    public static final String ALERT_EDIT_NOTICE = "Address was successfully updated.";
     public static final String ALERT_DESTROY_NOTICE = "Address was successfully destroyed.";
 
 }
